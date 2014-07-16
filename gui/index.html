@@ -97,21 +97,24 @@
       <span class="navbar-brand"><img class="logo" src="st-logo-128.png" width="32" height="32" /> Syncthing<small class="hidden-xs"> <span class="text-muted">|</span> {{thisNodeName()}}</small></span>
       <ul class="nav navbar-nav navbar-right">
         <li ng-if="upgradeInfo.newer">
-          <button type="button" class="btn navbar-btn btn-default" href="" ng-click="upgrade()"><span class="glyphicon glyphicon-chevron-up"></span>&emsp;Upgrade to {{upgradeInfo.latest}}</button>
+          <button type="button" class="btn navbar-btn btn-default" href="" ng-click="upgrade()">
+          <span class="glyphicon glyphicon-chevron-up"></span>&emsp;
+          <span translate translate-value-version="{{upgradeInfo.latest}}">UpgradeToButton</span>
+          </button>
         </li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Edit&nbsp;<b class="caret"></b></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span translate>EditMenu</span>&nbsp;<b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="" ng-click="addRepo()"><span class="glyphicon glyphicon-hdd"></span>&emsp;Add Repository</a></li>
-            <li><a href="" ng-click="addNode()"><span class="glyphicon glyphicon-retweet"></span>&emsp;Add Node</a></li>
+            <li><a href="" ng-click="addRepo()"><span class="glyphicon glyphicon-hdd"></span>&emsp;<span translate>AddRepoButton</span></a></li>
+            <li><a href="" ng-click="addNode()"><span class="glyphicon glyphicon-retweet"></span>&emsp;<span translate>AddNodeButton</span></a></li>
             <li class="divider"></li>
-            <li><a href="" ng-click="editSettings()"><span class="glyphicon glyphicon-cog"></span>&emsp;Settings</a></li>
-            <li><a href="" ng-click="idNode()"><span class="glyphicon glyphicon-qrcode"></span>&emsp;Show ID</a></li>
+            <li><a href="" ng-click="editSettings()"><span class="glyphicon glyphicon-cog"></span>&emsp;<span translate>SettingsButton</span></a></li>
+            <li><a href="" ng-click="idNode()"><span class="glyphicon glyphicon-qrcode"></span>&emsp;<span translate>ShowIDButton</span></a></li>
             <li class="divider"></li>
-            <li><a href="" ng-click="shutdown()"><span class="glyphicon glyphicon-off"></span>&emsp;Shutdown</a></li>
-            <li><a href="" ng-click="restart()"><span class="glyphicon glyphicon-refresh"></span>&emsp;Restart</a></li>
+            <li><a href="" ng-click="shutdown()"><span class="glyphicon glyphicon-off"></span>&emsp;<span translate>ShutdownButton</span></a></li>
+            <li><a href="" ng-click="restart()"><span class="glyphicon glyphicon-refresh"></span>&emsp;<span translate>RestartButton</span></a></li>
             <li class="divider"></li>
-            <li><a href="" ng-click="about()"><span class="glyphicon glyphicon-heart-empty"></span>&emsp;About</a></li>
+            <li><a href="" ng-click="about()"><span class="glyphicon glyphicon-heart-empty"></span>&emsp;<span translate>About</span></a></li>
           </ul>
         </li>
       </ul>
@@ -125,12 +128,12 @@
     <div ng-if="!configInSync" class="row">
       <div class="col-md-12">
         <div class="panel panel-warning">
-          <div class="panel-heading"><h3 class="panel-title">Restart Needed</h3></div>
+          <div class="panel-heading"><h3 translate class="panel-title">RestartNeededTitle</h3></div>
           <div class="panel-body">
-            <p>The configuration has been saved but not activated. Syncthing must restart to activate the new configuration.</p>
+            <p translate>RestartNeededBody</p>
           </div>
           <div class="panel-footer">
-            <button type="button" class="btn btn-sm btn-default pull-right" ng-click="restart()"><span class="glyphicon glyphicon-refresh"></span>&emsp;Restart</button>
+            <button type="button" class="btn btn-sm btn-default pull-right" ng-click="restart()"><span class="glyphicon glyphicon-refresh"></span>&emsp;<span translate>RestartButton</span></button>
             <div class="clearfix"></div>
           </div>
         </div>
@@ -160,60 +163,60 @@
                   <table class="table table-condensed table-striped">
                     <tbody>
                       <tr>
-                        <th><span class="glyphicon glyphicon-tag"></span>&emsp;Repository ID</th>
+                        <th><span class="glyphicon glyphicon-tag"></span>&emsp;<span translate>RepositoryIDLabel</span></th>
                         <td class="text-right">{{repo.ID}}</td>
                       </tr>
                       <tr>
-                        <th><span class="glyphicon glyphicon-folder-open"></span>&emsp;Folder</th>
+                        <th><span class="glyphicon glyphicon-folder-open"></span>&emsp;<span translate>FolderLabel</span></th>
                         <td class="text-right">{{repo.Directory}}</td>
                       </tr>
                       <tr ng-if="model[repo.ID].invalid">
-                        <th><span class="glyphicon glyphicon-warning-sign"></span>&emsp;Error</th>
+                        <th><span class="glyphicon glyphicon-warning-sign"></span>&emsp;<span translate>ErrorLabel</span></th>
                         <td class="text-right">{{model[repo.ID].invalid}}</td>
                       </tr>
                       <tr>
-                        <th><span class="glyphicon glyphicon-comment"></span>&emsp;Synchronization</th>
+                        <th><span class="glyphicon glyphicon-comment"></span>&emsp;<span translate>SynchronizationLabel</span></th>
                         <td class="text-right">{{repoStatus(repo.ID)}}</td>
                       </tr>
                       <tr>
-                        <th><span class="glyphicon glyphicon-globe"></span>&emsp;Global Repository</th>
-                        <td class="text-right">{{model[repo.ID].globalFiles | alwaysNumber}} items, {{model[repo.ID].globalBytes | binary}}B</td>
+                        <th><span class="glyphicon glyphicon-globe"></span>&emsp;<span translate>GlobalRepoLabel</span></th>
+                        <td class="text-right">{{model[repo.ID].globalFiles | alwaysNumber}} <span translate>itemsLabel</span>, {{model[repo.ID].globalBytes | binary}}B</td>
                       </tr>
                       <tr>
-                        <th><span class="glyphicon glyphicon-home"></span>&emsp;Local Repository</th>
-                        <td class="text-right">{{model[repo.ID].localFiles | alwaysNumber}} items, {{model[repo.ID].localBytes | binary}}B</td>
+                        <th><span class="glyphicon glyphicon-home"></span>&emsp;<span translate>LocalRepoLabel</span></th>
+                        <td class="text-right">{{model[repo.ID].localFiles | alwaysNumber}} <span translate>items</span>, {{model[repo.ID].localBytes | binary}}B</td>
                       </tr>
                       <tr>
-                        <th><span class="glyphicon glyphicon-cloud-download"></span>&emsp;Out of Sync</th>
+                        <th><span class="glyphicon glyphicon-cloud-download"></span>&emsp;<span translate>OutOfSyncLabel</span></th>
                         <td class="text-right">
-                        <a ng-if="model[repo.ID].needFiles > 0" ng-click="showNeed(repo.ID)" href="">{{model[repo.ID].needFiles | alwaysNumber}} items, {{model[repo.ID].needBytes | binary}}B</a>
-                        <span ng-if="model[repo.ID].needFiles == 0">0 items, 0 B</span>
+                        <a ng-if="model[repo.ID].needFiles > 0" ng-click="showNeed(repo.ID)" href="">{{model[repo.ID].needFiles | alwaysNumber}} <span translate>itemsLabel</span>, {{model[repo.ID].needBytes | binary}}B</a>
+                        <span ng-if="model[repo.ID].needFiles == 0">0 <span translate>itemsLabel</span>, 0 B</span>
                         </td>
                       </tr>
                       <tr>
-                        <th><span class="glyphicon glyphicon-lock"></span>&emsp;Master Repository</th>
+                        <th><span class="glyphicon glyphicon-lock"></span>&emsp;<span translate>MasterRepoLabel</span></th>
                         <td class="text-right">
-                          <span ng-if="repo.ReadOnly">Yes</span>
-                          <span ng-if="!repo.ReadOnly">No</span>
+                          <span translate ng-if="repo.ReadOnly">Yes</span>
+                          <span translate ng-if="!repo.ReadOnly">No</span>
                         </td>
                       </tr>
                       <tr>
-                        <th><span class="glyphicon glyphicon-unchecked"></span>&emsp;Ignore Permissions</th>
+                        <th><span class="glyphicon glyphicon-unchecked"></span>&emsp;<span translate>IgnorePermissionsLabel</span></th>
                         <td class="text-right">
-                          <span ng-if="repo.IgnorePerms">Yes</span>
-                          <span ng-if="!repo.IgnorePerms">No</span>
+                          <span translate ng-if="repo.IgnorePerms">Yes</span>
+                          <span translate ng-if="!repo.IgnorePerms">No</span>
                         </td>
                       </tr>
                       <tr>
-                        <th><span class="glyphicon glyphicon-share-alt"></span>&emsp;Shared With</th>
+                        <th><span class="glyphicon glyphicon-share-alt"></span>&emsp;<span translate>SharedWithLabel</span></th>
                         <td class="text-right">{{sharesRepo(repo)}}</td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
                 <span class="pull-right">
-                  <a class="btn btn-sm btn-primary" href="" ng-click="editRepo(repo)"><span class="glyphicon glyphicon-pencil"></span>&emsp;Edit</a>
-                  <a class="btn btn-sm btn-danger" ng-if="repo.ReadOnly && model[repo.ID].needFiles > 0" ng-click="override(repo.ID)" href=""><span class="glyphicon glyphicon-upload"></span>&emsp;Override Changes</a>
+                  <a class="btn btn-sm btn-primary" href="" ng-click="editRepo(repo)"><span class="glyphicon glyphicon-pencil"></span>&emsp;<span translate>EditButton</span></a>
+                  <a class="btn btn-sm btn-danger" ng-if="repo.ReadOnly && model[repo.ID].needFiles > 0" ng-click="override(repo.ID)" href=""><span class="glyphicon glyphicon-upload"></span>&emsp;<span translate>OverrideChangesButton</span></a>
                 </span>
               </div>
             </div>
@@ -655,6 +658,8 @@
 
 
   <script src="angular.min.js"></script>
+  <script src="angular-translate.min.js"></script>
+  <script src="angular-translate-loader.min.js"></script>
   <script src="jquery-2.0.3.min.js"></script>
   <script src="bootstrap/js/bootstrap.min.js"></script>
   <script src="app.js"></script>

@@ -7,15 +7,21 @@
 
 'use strict';
 
-var syncthing = angular.module('syncthing', []);
+var syncthing = angular.module('syncthing', ['pascalprecht.translate']);
 var urlbase = 'rest';
 
-syncthing.config(function ($httpProvider) {
+syncthing.config(function ($httpProvider, $translateProvider) {
     $httpProvider.defaults.xsrfHeaderName = 'X-CSRF-Token';
     $httpProvider.defaults.xsrfCookieName = 'CSRF-Token';
+
+    $translateProvider.useStaticFilesLoader({
+        prefix: 'lang-',
+        suffix: '.json'
+    });
+    $translateProvider.preferredLanguage('en');
 });
 
-syncthing.controller('SyncthingCtrl', function ($scope, $http) {
+syncthing.controller('SyncthingCtrl', function ($scope, $http, $translate) {
     var prevDate = 0;
     var getOK = true;
     var restarting = false;
