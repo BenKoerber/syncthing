@@ -1,0 +1,32 @@
+{
+	"UpgradeToButton": "Upgrade to {{version}}",
+
+    "RestartNeededTitle": "Restart Needed",
+    "RestartNeededBody": "The configuration has been saved but not activated. Syncthing must restart to activate the new configuration.",
+
+    "EditMenu": "Edit",
+    "AddRepoButton": "Add Repository",
+    "AddNodeButton": "Add Node",
+    "SettingsButton": "Settings",
+    "ShowIDButton": "Show ID",
+    "ShutdownButton": "Shutdown",
+    "RestartButton": "Restart",
+    "AboutButton": "About",
+    "EditButton": "Edit",
+    "OverrideChangesButton": "Override Changes",
+
+    "RepositoryIDLabel": "Repository ID",
+    "FolderLabel": "Folder",
+    "ErrorLabel": "Error",
+    "SynchronizationLabel": "Syncronization",
+    "GlobalRepoLabel": "Global Repository",
+    "LocalRepoLabel": "Local Repository",
+    "OutOfSyncLabel": "Out Of Sync",
+    "itemsLabel": "items",
+    "MasterRepoLabel": "Master Repository",
+    "SharedWithLabel": "Shared With",
+    "IgnorePermsLabel": "Ignore Permissions",
+
+    "Yes": "Yes",
+    "No": "No"
+}
