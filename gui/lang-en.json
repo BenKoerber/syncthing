@@ -15,6 +15,12 @@
     "EditButton": "Edit",
     "OverrideChangesButton": "Override Changes",
 
+    "SettingsTitle": "Settings",
+    "SaveButton:": "Save",
+    "DeleteButton:": "Delete",
+    "CloseButton": "Close",
+    "GenerateButton": "Generate",
+
     "RepositoryIDLabel": "Repository ID",
     "FolderLabel": "Folder",
     "ErrorLabel": "Error",
@@ -28,5 +34,13 @@
     "IgnorePermsLabel": "Ignore Permissions",
 
     "Yes": "Yes",
-    "No": "No"
+    "No": "No",
+
+    "CopyrightNotice": "Copyright &copy; 2014 Jakob Borg and the following Contributors:",
+    "CopyrightOther": "Syncthing includes the following software or portions thereof:",
+
+    "URTitle": "Allow Anonymous Usage Reporting?",
+    "URBody": "The encrypted usage report is sent daily. It is used to track common platforms, repo sizes and app versions. If the reported data set is changed you will be prompted with this dialog again.",
+    "URLink": "The aggregated statistics are publicly available at {{url}}",
+    "URPreviewButton": "Preview Usage Report",
 }

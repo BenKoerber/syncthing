@@ -508,14 +508,12 @@
               </div>
             </div>
           </form>
-          <div ng-show="!editingExisting">
-            When adding a new repository, keep in mind that the Repository ID is used to tie repositories together between nodes. They are case sensitive and must match exactly between all nodes.
-          </div>
+          <div translate ng-show="!editingExisting">NewRepoBody</div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" ng-click="saveRepo()" ng-disabled="repoEditor.$invalid"><span class="glyphicon glyphicon-ok"></span>&emsp;Save</button>
+          <button type="button" class="btn btn-primary" ng-click="saveRepo()" ng-disabled="repoEditor.$invalid"><span class="glyphicon glyphicon-ok"></span>&emsp;<span translate>SaveButton</span></button>
           <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>&emsp;Close</button>
-          <button ng-if="editingExisting" type="button" class="btn btn-danger pull-left" ng-click="deleteRepo()"><span class="glyphicon glyphicon-minus"></span>&emsp;Delete</button>
+          <button ng-if="editingExisting" type="button" class="btn btn-danger pull-left" ng-click="deleteRepo()"><span class="glyphicon glyphicon-minus"></span>&emsp;<span translate>DeleteButton</span></button>
         </div>
       </div>
     </div>
@@ -527,7 +525,7 @@
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Settings</h4>
+          <h4 translate class="modal-title">SettingsTitle</h4>
         </div>
         <div class="modal-body">
           <form role="form">
@@ -559,7 +557,7 @@
                   <div ng-if="setting.type == 'apikey'">
                     <label>{{setting.descr}} (<a href="http://discourse.syncthing.net/t/v0-8-14-api-keys/335">Usage</a>)</label>
                     <div class="well well-sm text-monospace">{{tmpGUI[setting.id] || "-"}}</div>
-                    <button type="button" class="btn btn-sm btn-default" ng-click="setAPIKey(tmpGUI)">Generate</button>
+                    <button translate type="button" class="btn btn-sm btn-default" ng-click="setAPIKey(tmpGUI)">GenerateButton</button>
                   </div>
                 </div>
               </div>
@@ -567,8 +565,8 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" ng-click="saveSettings()"><span class="glyphicon glyphicon-ok"></span>&emsp;Save</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>&emsp;Close</button>
+          <button type="button" class="btn btn-primary" ng-click="saveSettings()"><span class="glyphicon glyphicon-ok"></span>&emsp;<span translate>SaveButton</span></button>
+          <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>&emsp;<span translate>CloseButton</span></button>
         </div>
       </div>
     </div>
@@ -580,21 +578,17 @@
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header alert alert-success">
-          <h4 class="modal-title">Allow Anonymous Usage Reporting?</h4>
+          <h4 translate class="modal-title">URTitle</h4>
         </div>
         <div class="modal-body">
-        <p>
-        The encrypted usage report is sent daily. It is used to track common platforms, repo sizes and app versions. If the reported data set is changed you will be prompted with this dialog again.
-        </p>
-        <p>
-        The aggregated statistics are publicly available at <a href="https://data.syncthing.net/">https://data.syncthing.net/</a>.
-        </p>
-        <button type="button" class="btn btn-default" ng-show="!reportPreview" ng-click="reportPreview = true">Preview Usage Report</button>
+        <p translate>URBody</p>
+        <p translate translate-value-url="https://data.syncthing.net">URLink</p>
+        <button translate type="button" class="btn btn-default" ng-show="!reportPreview" ng-click="reportPreview = true">URPreviewButton</button>
         <pre ng-if="reportPreview"><small>{{reportData | json}}</small></pre>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-success" ng-click="acceptUR()"><span class="glyphicon glyphicon-ok"></span>&emsp;Yes</button>
-          <button type="button" class="btn btn-danger" ng-click="declineUR()"><span class="glyphicon glyphicon-remove"></span>&emsp;No</button>
+          <button type="button" class="btn btn-success" ng-click="acceptUR()"><span class="glyphicon glyphicon-ok"></span>&emsp;<span translate>Yes</span></button>
+          <button type="button" class="btn btn-danger" ng-click="declineUR()"><span class="glyphicon glyphicon-remove"></span>&emsp;<span translate>No</span></button>
         </div>
       </div>
     </div>
@@ -618,7 +612,7 @@
     <h1 class="text-center"><img src="st-logo-128.png" style="vertical-align: -16px" width="64" height="64"/> Syncthing<br/><small>{{version}}</small></h1>
     <hr/>
 
-    <p>Copyright &copy; 2014 <b>Jakob Borg</b> and the following <b>Contributors</b>:</p>
+    <p translate>CopyrightNotice</p>
     <div class="row">
       <div class="col-md-6">
         <ul>
@@ -641,7 +635,7 @@
     </div>
     <hr/>
 
-    <p>Syncthing includes the following software or portions thereof:
+    <p translate>CopyrightOther</p>
     <ul>
       <li><a href="http://golang.org/">The Go Programming Languange</a>, Copyright &copy; 2012 The Go Authors.</li>
       <li><a href="https://bitbucket.org/kardianos/osext">kardianos/osext</a>, Copyright &copy; 2012 Daniel Theophanes.</li>
@@ -653,7 +647,6 @@
       <li><a href="https://angularjs.org/">AngularJS</a>, Copyright &copy; 2010-2014 Google, Inc.</li>
       <li><a href="http://getbootstrap.com/">Bootstrap</a>, Copyright &copy; 2011-2014 Twitter, Inc.</li>
     </ul>
-    </p>
   </modal>
 
 
